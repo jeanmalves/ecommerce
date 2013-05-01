@@ -1,0 +1,157 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400italic);
+
+/* reset css*/
+*{
+	margin:0;
+	padding:0;
+}
+div:after, ol:after, form:after, ul:after, dl:after {content:".";display:block;clear:both;visibility:hidden;height:0;overflow:hidden;}
+
+#sombra {
+	background-image: url(../img/sombra.png);
+	background-repeat: repeat;
+	height: auto;
+	width: 1004px;
+	margin-top: auto;
+	margin-right: auto;
+	margin-bottom: 5px;
+	margin-left: auto;
+}
+#container {
+	height: auto;
+	width: 1000px;
+	z-index: 1;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top:auto;
+	background-color: #FFF;
+}
+#topo {
+	float: left;
+	height: auto;
+	width: 1000px;
+}
+.logo {
+	display: block;
+	width: 207px;
+	height: 87px;
+	background: url(../img/logo.png) bottom no-repeat;
+	text-indent: -9999px;
+	padding-top: 0;
+	margin-top:10px;
+	margin-left: 30px;
+	margin-bottom:15px;
+}
+#menubar {
+	padding: 10px 30px 10px 30px;
+	font-family: "Myriad Pro";
+	font-size: 13px;
+	width:940px;
+	/* Cantos redondos 
+	-moz-border-radius: 6px;
+	border-radius: 6px;*/
+	z-index: 2;
+	background: #a60000;
+	text-decoration: none;
+}
+#menubar ul{
+	 list-style-type: none;
+	 padding:0;
+	 margin:0;	
+}
+#menubar li{
+	 display: block;
+	 float:left;
+	 padding-right:20px;
+	 border:none;
+}
+#menubar a{
+	text-decoration:none;
+	color:#FFF;
+}
+
+#breadcrumb {
+	font-family: "Myriad Pro";
+	font-size: 12px;
+	float: left;
+	height: 30px;
+	padding: 15px 5px 0;
+    text-indent: 5px;
+    width: 99%;
+}
+
+
+
+#linhaAmarela {
+	background-color: #de9613;
+	height: 10px;
+	width: 1000px;
+	z-index:3;
+	margin-top:-5px;
+}
+#linhaVermelha {
+	background-color: #800101;
+	height: 5px;
+	width: 1000px;
+	z-index:3;
+}
+#slider {
+	float: left;
+	height: 350px;
+	width: 1000px;
+}
+#left {
+	float: left;
+	height: auto;
+	width: 200px;
+	margin-bottom:15px;
+}
+#conteudo {
+	float: left;
+	width: 800px;
+	margin-bottom:15px;
+}
+#footer {
+	background-image: url(../img/background-footer.png);
+	background-repeat: repeat-y;
+	height: auto;
+	width: 1000px;
+	clear: both;
+	float: left;
+}
+#footer #menu-footer{
+	height:110px;
+	float:left;
+	width:100%;
+		
+}
+#footer #container-copy{
+	height:auto;
+	width:100%;
+	float:left;	
+}
+#footer #copy{
+	vertical-align:bottom;
+	text-align:center;
+	font-size:11px;
+	width:auto;
+	height:auto;
+	float:left;
+	margin: 40px 0 5px 10px;
+	
+}
+#logo-footer{
+	float:right;
+	margin: 10px;
+	overflow: hidden;
+
+
+}
+#logo-footer img{
+	float:right;
+	margin: 5px;
+}
