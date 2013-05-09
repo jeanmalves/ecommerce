@@ -9,6 +9,10 @@ class Home extends CI_Controller {
 	function index() {
 		
 		$dados['title'] = 'Home';
+		
+		//adiciona um caminho na breadcrumb
+		$this->breadcrumb->add_crumb('Home', base_url());
 		$this->template->build('home', $dados);
+		
 	}
 }

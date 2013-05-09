@@ -45,6 +45,8 @@ div:after, ol:after, form:after, ul:after, dl:after {content:".";display:block;c
 	margin-top:10px;
 	margin-left: 30px;
 	margin-bottom:15px;
+	position:relative;
+	float:left;
 }
 #menubar {
 	padding: 10px 30px 10px 30px;
@@ -83,9 +85,29 @@ div:after, ol:after, form:after, ul:after, dl:after {content:".";display:block;c
     text-indent: 5px;
     width: 99%;
 }
-
-
-
+#breadcrumb a{
+	color:#000;	
+}
+#container-conteudo-topo{
+	height:auto;
+}		
+.login{
+	width:300px;
+	float:left;
+	position:relative;
+	margin:13px 10px 0 70px;	
+}
+.login a{
+	color:#000!important;
+}
+#carrinho-compras{
+	float:left;
+	position:relative;
+	margin:15px 10px 0 280px;	
+}
+#carrinho-compras img{
+	margin:10px 0 0 10px;
+}
 #linhaAmarela {
 	background-color: #de9613;
 	height: 10px;

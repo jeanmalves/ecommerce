@@ -39,6 +39,7 @@
 */
 
 $route['default_controller'] 					   = "home";
+$route['login']									   = "Login";	
 $route['admin']		 		 					   = "admin/login";	
 $route['servicos/hospedagem']					   = "hospedagem"; 
 $route['hospedagem/assinar-plano']				   = "pedido"; 	
