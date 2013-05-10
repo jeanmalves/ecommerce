@@ -4,7 +4,7 @@
 class Breadcrumb
 {
 	// variables
-	public $link_type = ' &gt; '; // must have spaces around it
+	public $link_type = '<span class="divider">/</span>';// ' &gt; '; // must have spaces around it
 	public $breadcrumb = array();
 	public $output = '';
 	
@@ -56,20 +56,23 @@ class Breadcrumb
 		foreach($this->breadcrumb as $key=>$val)
 		{
 			// do we need to add a link?
-			if($counter > 0)
+		/*	if($counter > 0)
 			{
 				// we do
 				$this->output .= $this->link_type;
-			}
+			}*/
 			
 			// are we using a hyperlink?
 			if($val['url'])
 			{
 				// add href tag
-				$this->output .= '<a href="' . $val['url'] . '">' . $val['title'] . '</a>';
+				//original  ---  $this->output .= '<a href="' . $val['url'] . '">' . $val['title'] . '</a>';
+				//modificado
+				$this->output .= '<li><a href="' . $val['url'] . '">' . $val['title'] . '</a><span class="divider">/</span></li>';
+				
 			} else {
 				// don't use hyperlinks
-				$this->output .= $val['title'];
+				$this->output .= '<li class="active">'.$val['title'].'</li>';
 			}
 			
 			// increment counter

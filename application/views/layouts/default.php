@@ -1,74 +1,136 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title> - <?php echo $title; ?></title>
-
-<script type="text/javascript" src="<?php echo base_url(); ?>static/js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>static/js/plugins/accordionmenu.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>static/js/plugins/jquery.orbit-1.2.3.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>static/js/plugins/jquery.jcarousel.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>static/js/plugins/jquery.maskedinput.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>static/js/plugins/jquery.blockUI.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>static/js/plugins/jquery.validate.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>static/js/plugins/jquery.mkscommon.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>static/js/script_jquey.js"></script>
-
-<link href="<?php echo base_url(); ?>static/css/style.css" rel="stylesheet" type="text/css" />
-<link href="<?php echo base_url(); ?>static/css/accordionmenu.css" rel="stylesheet" type="text/css" />
-<link href="<?php echo base_url(); ?>static/css/fontes/stylesheet.css" rel="stylesheet" type="text/css" />
-<link href="<?php echo base_url(); ?>static/css/skin.css" rel="stylesheet" type="text/css" />
-<link href="<?php echo base_url(); ?>static/css/orbit-1.2.3.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript">
-	var system_vars = new Object();
-	system_vars.base_url = '<?php echo base_url(); ?>';
-</script>
-</head>
-
-<body>
-<div id="sombra">
-    <div id="container">
-        <div id="topo">
-            <div id="container-conteudo-topo">
-            	<div class="logo"></div>
-            	<div class="login"><a href="<?php echo base_url(); ?>/login">Faça login </a>ou<a href="<?php echo base_url(); ?>"> Cadastre-se</a></div>
-                <div id="carrinho-compras">
-                	<div>Meu Carrinho</div>
-                    <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url();?>static/img/carrinho-compras.png" /></a></div>
-            </div>    
-         	<div id="menubar">
-                     <ul>
-                        <li><a href="#undefined" title="Página Inicial">Página Inicial</a></li>
-                        <li><a href="#undefined" title="Sobre">Sobre</a></li>
-                        <li><a href="#undefined" title="Contactos">Produtos</a></li>
-                        <li><a href="#undefined" title="Negócios" class="selecionado">Contato</a></li>
-                        <li><a href="#undefined" title="Suporte">SAC</a></li>
-                  </ul>
-                </div><!-- end menubar -->
-                <div id="linhaAmarela"></div>
-                <div id="linhaVermelha"></div>
-            </div><!-- end topo -->
-            <div id="slider">
-                <img src="<?php echo base_url(); ?>static/img/banners/compras.jpg" width="1000" height="350" alt="compras" />
-                <div id="linhaVermelha"></div>
-            </div><!-- end slider -->
-            
-            <div id="breadcrumb"><?php echo $this->breadcrumb->output(); ?></div>
-			
-            <div id="conteudo">
-       			<?php echo $template['body']; ?>
-       		</div>
-            <div id="footer">
-        	<div id="linhaVermelha"></div>
-        	<div id="menu-footer"></div>
-            <div id="container-copy">
-                <div id="copy">
-                    &copy; E-commerce. Todos os direitos reservados.
-                </div><!-- end copy -->
-                <div id="logo-footer"><img src="<?php echo base_url(); ?>static/img/logo-footer.png" width="90" height="38" /></div>
-            </div>    
-        </div><!-- end footer -->   
-    </div><!-- end container -->   
-</div><!-- end sombra -->
-</body>
-</html>
+<!DOCTYPE html>
+	<html lang="en">
+		<meta charset="UTF-8">
+		<head>
+	    	<title>Bootstrap 101 Template</title>
+	    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    	<!-- Bootstrap -->
+	    	<link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	    	<link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" media="screen">
+	    	
+	    </head>
+	    <body>
+	    	<div class="container">
+	    		<header class="jumbotron subhead">
+	    			 <div class="container">
+	    			 	<div class="carbonad">
+	    			 		<img alt="" src="<?php echo base_url(); ?>assets/img/logo.png" />
+	    			 	</div>
+	    			 	<div class="login">
+	    			 		<p> <a href>Acesse sua área</a> ou <a href>cadastre-se</a> </p>
+	    			 	</div>	
+	    			 	<div id="carrinho-container">
+	    			 		<img alt="" src="<?php echo base_url(); ?>assets/img/carrinho-compras.png" />
+	    			 		<h6>Carrinho vazio.</h6>
+	    			 	</div>
+	    			 </div>
+	    		</header>	
+	    		<br /> 
+	    		<div class="navbar navbar-inverse">
+			      <div class="navbar-inner">
+			        <div class="container">
+			          <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			          </button>
+			          <a href="./index.html" class="brand">Bootstrap</a>
+			          <div class="nav-collapse collapse">
+			            <ul class="nav">
+			              <li class="">
+			                <a href="./index.html">Home</a>
+			              </li>
+			              <li class="">
+			                <a href="./getting-started.html">Get started</a>
+			              </li>
+			              <li class="">
+			                <a href="./scaffolding.html">Scaffolding</a>
+			              </li>
+			              <li class="">
+			                <a href="./base-css.html">Base CSS</a>
+			              </li>
+			              <li class="">
+			                <a href="./components.html">Components</a>
+			              </li>
+			              <li class="active">
+			                <form class="navbar-search pull-left" action="">
+								<input class="search-query span2" type="text" placeholder="Search">
+							</form>
+			              </li>
+			            </ul>
+			          </div>
+			        </div>
+			      </div>
+			    </div>
+	    	    <div id="myCarousel" class="carousel slide">
+				    <ol class="carousel-indicators">
+					    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					    <li data-target="#myCarousel" data-slide-to="1"></li>
+					    <li data-target="#myCarousel" data-slide-to="2"></li>
+				    </ol>
+				    <!-- Carousel items -->
+				    <div class="carousel-inner">
+				    <div class="active item">
+				    	<img src="<?php echo base_url(); ?>assets/img/compras.jpg" alt="">
+				    	<div class="carousel-caption">
+	                    </div>
+				    </div>
+				    <div class="item">
+				    	<img src="<?php echo base_url(); ?>assets/img/compras.jpg" alt="">
+				    	<div class="carousel-caption">
+	                    </div>
+				    </div>
+				    <div class="item">
+				    	<img src="<?php echo base_url(); ?>assets/img/compras.jpg" alt="">
+				    	<div class="carousel-caption">
+	                    </div>
+				    </div>
+				    </div>
+				    <!-- Carousel nav -->
+				    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+				    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+			    </div>
+			    <ul class="breadcrumb">
+			    	<?php echo $this->breadcrumb->output(); ?>
+				   <!-- <li><a href="#">Home</a> <span class="divider">/</span></li>
+				    <li><a href="#">Library</a> <span class="divider">/</span></li>
+				    <li class="active">Data</li>-->
+    			</ul>
+    			<div class="span3">
+		          <div class="well sidebar-nav">
+		            <ul class="nav nav-list">
+		              <li class="nav-header">Sidebar</li>
+		              <li class="active"><a href="#">Link</a></li>
+		              <li><a href="#">Link</a></li>
+		              <li><a href="#">Link</a></li>
+		              <li><a href="#">Link</a></li>
+		              <li class="nav-header">Sidebar</li>
+		              <li><a href="#">Link</a></li>
+		              <li><a href="#">Link</a></li>
+		              <li><a href="#">Link</a></li>
+		              <li><a href="#">Link</a></li>
+		              <li><a href="#">Link</a></li>
+		              <li><a href="#">Link</a></li>
+		              <li class="nav-header">Sidebar</li>
+		              <li><a href="#">Link</a></li>
+		              <li><a href="#">Link</a></li>
+		              <li><a href="#">Link</a></li>
+		            </ul>
+		          </div><!--/.well -->
+		        </div>
+	    		<div class="conteudo well"></div>
+	    		<footer>
+        			<div id="menu-footer"></div>
+	                <p class="text-center">&copy; E-commerce. Todos os direitos reservados.</p>
+	    		</footer>
+	   			<script src="<?php echo base_url(); ?>assets/js/jquery-1.9.1.min.js"></script>
+		    	<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+		    	<script src="<?php echo base_url(); ?>assets/js/bootstrap-carousel.js"></script>
+		    	<script>
+			    	$('.carousel').carousel({
+			    	  interval: 3000
+			    	})
+	    		</script>
+	    	</div>	
+	    </body>
+    </html>
