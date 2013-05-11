@@ -21,7 +21,10 @@ header .container .login{
 	margin:5px 10px 0 70px;	
 }
 header .container .login p a{
-	color:@blue;
+	color:#000;
+}
+header .container .login p a:hover{
+	color:#A0A0A0;
 }
 #carrinho-container{
 	float:right;
@@ -48,13 +51,17 @@ header .container .login p a{
     color:#000;
 }
 .nav-list > .active > a, .nav-list > .active > a:hover, .nav-list > .active > a:focus{
-	background:#a60000;
+	background:#515151;
 }
 .nav > li > a{
 	color:#5A5A5A;
 }
 .breadcrumb{
-	margin-bottom:10px;
+	margin:0;
+	background:#fff;
+}
+.breadcrumb a{
+	color:#999999;
 }
 .carousel{
 	margin-bottom:10px;

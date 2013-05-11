@@ -39,8 +39,9 @@
 */
 
 $route['default_controller'] 					   = "home";
-$route['login']									   = "Login";	
-$route['admin']		 		 					   = "admin/login";	
+$route['area-cliente/login']					   = "login";	
+$route['admin']		 		 					   = "admin/home";
+$route['admin/login']		 		 			   = "admin/login";	
 $route['servicos/hospedagem']					   = "hospedagem"; 
 $route['hospedagem/assinar-plano']				   = "pedido"; 	
 $route['hospedagem/assinar-plano/(:any)']		   = "pedido"; 

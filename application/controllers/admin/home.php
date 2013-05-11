@@ -8,9 +8,9 @@ class Home extends CI_Controller {
 	
 	function index() {
 		
-		$dados	   = array();
+		$dados = array();
 		$slideShow = array();
-		$dados['conteudo']= 'conteudo';
+		$dados['conteudo'] = 'ok';
 		
 		
 		
@@ -19,12 +19,10 @@ class Home extends CI_Controller {
 		//breadcrumb
 		$this->breadcrumb->add_crumb('Home', base_url());
 		//titulo da pagina
-		$this->template->title('Home - Solution Commerce');
-		//slideshow jquery
-		$this->template->set_partial('slideshow','layouts/partial/slideshow'); 
+		$this->template->title('Painel Administrativo - Solution Commerce');
 		//menu lateral
 		$this->template->set_partial('sidebar','layouts/partial/sidebar'); 
 		//constroi o template.
-		$this->template->build('home', $dados); 
+		$this->template->build('admin/home', $dados); 
 	}
 }
