@@ -4,7 +4,7 @@ class Usuario_model extends MY_Model {
 	
 	public function __construct() {
 		parent::__construct();
-		$this->_table = "tb_usuario";
+		$this->_table = "usuarios";
 	}
 	
 	public function autenticaLogin( $usuario, $senha ) {
