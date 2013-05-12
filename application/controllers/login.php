@@ -16,6 +16,8 @@ class Login extends CI_Controller {
 		
 		//titulo da pagina
 		$this->template->title('Home - Solution Commerce');
+		//header loja.
+		$this->template->set_partial('header','layouts/partial/header');
 		//menu loja
 		$this->template->set_partial('menu','layouts/partial/menu');
 		//constroi o layout na pagina.
@@ -23,7 +25,7 @@ class Login extends CI_Controller {
 	}
 	
 	// Recebe envio do form de login
-	public function autenticaUsuario() {
+	public function autenticaCliente() {
 
 		//se nao for enviado nada, redireciona para a pagina de login
 		if( !$this->input->post() )
@@ -39,8 +41,8 @@ class Login extends CI_Controller {
 		
 		// valida��o do form
 		$this->load->library('form_validation');		
-		$this->form_validation->set_rules('inputLogin', '', 'trim|required');
-		$this->form_validation->set_rules('inputPassword', '', 'trim|required|min_length[6]');
+		$this->form_validation->set_rules('inputLogin', 'Login', 'trim|required');
+		$this->form_validation->set_rules('inputPassword', 'Senha', 'trim|required|min_length[6]');
 		
 		if ( $this->form_validation->run() == TRUE ) {
 			
@@ -49,7 +51,8 @@ class Login extends CI_Controller {
 					'login_nome' => $dadosLogin['usr_nome'],
 					'login_user' => $dadosLogin['usr_login'],
 					'id_user'	=> $dadosLogin['usr_id'],
-					'tipo_user'	=> $dadosLogin['usr_tipo']
+					'tipo_user'	=> $dadosLogin['usr_tipo'],
+					
 				));	
 				//redireciona para a pagina principal
 				redirect( base_url());
@@ -61,14 +64,16 @@ class Login extends CI_Controller {
 		}
 		$this->index();	
 	}
-	
+
 	public function sair() {
 		
 		// removendo sess�o
 		$this->session->unset_userdata(array(
 			'login_nome' => '',
 			'login_user' => '',
-			'id_user'	 => ''
+			'id_user'	 => '',
+			'tipo_user' => '',
+			
 		));
 		//exibe mensagem de logout.	
 		define_flashdata('notificacao_topo', 'sucesso', 'Logout realizado com sucesso!');		

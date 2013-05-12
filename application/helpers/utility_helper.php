@@ -257,17 +257,51 @@ if ( ! function_exists('formata_cep')) {
  * @return	string
  */
 if ( ! function_exists('checkLogin')) {
-	function checkLogin() {
+	function checkLoginCliente($tipo_login) {
 		$ci =& get_instance();
 		
-		$login_usuario = $ci->session->userdata('login_nome');
-		$nome_usuario = $ci->session->userdata('login_user');
-		$id_usuario	  = $ci->session->userdata('id_user');
+	  $tipo_logado = $ci->session->userdata('tipo_user');
+                if( $tipo_logado ) {
+                        if( $tipo_logado == 1 && $tipo_login == 'sistema' ) {
+                                define_flashdata('notificacao_topo', 'info', 'Voc� n�o tem permiss�o para acessar esta �rea!');
+                                redirect( base_url() . 'area-cliente/login' );
+                        } 
+                        elseif( $tipo_logado == 2 && $tipo_login == 'loja' ) {
+                                define_flashdata('notificacao_topo', 'info', 'Voc� n�o tem permiss�o para acessar esta �rea!');
+                                redirect( base_url() . 'area-cliente/login' );
+                        }
+                }
+                else {
+                        define_flashdata('notificacao_topo', 'info', 'Voc� precisa estar logado para acessar esta �rea!');
+                        $ci->session->set_userdata('login_redirect', $ci->uri->uri_string());
+                        redirect( base_url());               
+                }
+	}
+}	
+/*
+ * @access	public
+ * @return	string
+ */
+if ( ! function_exists('checkLoginSistema')) {
+	function checkLoginSistema($tipo_login) {
+		$ci =& get_instance();
 		
-		if((!$login_usuario || empty($login_usuario))||(!$nome_usuario || empty($nome_usuario))||(!$id_usuario || Empty($id_usuario)))
-		{
-			redirect( base_url() . 'admin/login' );	
-		}
+	  $tipo_logado = $ci->session->userdata('tipo_user');
+                if( $tipo_logado ) {
+                        if( $tipo_logado == 1 && $tipo_login == 'sistema' ) {
+                                define_flashdata('notificacao_topo', 'info', 'Voc� n�o tem permiss�o para acessar esta �rea!');
+                                redirect( base_url() . 'area-cliente/login' );
+                        } 
+                        elseif( $tipo_logado == 2 && $tipo_login == 'loja' ) {
+                                define_flashdata('notificacao_topo', 'info', 'Voc� n�o tem permiss�o para acessar esta �rea!');
+                                redirect( base_url() . 'admin/login' );
+                        }
+                }
+                else {
+                        define_flashdata('notificacao_topo', 'info', 'Voc� precisa estar logado para acessar esta �rea!');
+                        $ci->session->set_userdata('login_redirect', $ci->uri->uri_string());
+                        redirect( base_url()."admin/login");               
+                }
 	}
 }	
 
@@ -427,11 +461,11 @@ if ( ! function_exists('get_saudacao_admin')) {
 
 		if($usuario){
 			if ($tipo == 2){
-				$saudacao = '<p> Olá '.$usuario.'!   <a href="'.base_url().'area-admin/sair">Sair do sistema</a></p>';
+				$saudacao = '<p><small>  Olá '.$usuario.'!   <a href="'.base_url().'admin/sair">Sair do sistema</a></small> </p>';
 			}
 		}
 		else{
-			$saudacao = '<p> <a href="'.base_url().'admin/login">Acesse sua área</a></p>';
+			$saudacao = '<p><small>  <a href="'.base_url().'admin/login">Clique aqui e acesse o sistema</a></small> </p>';
 		}
 		return $saudacao;
 	}

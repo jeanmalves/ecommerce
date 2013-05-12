@@ -1,5 +1,5 @@
 <div class="well">
-<?php echo form_open(base_url().'login/loja', array('id'=>'FormLogin', 'class'=>'form-horizontal'));?>
+<?php echo form_open(base_url().'admin/login/user', array('id'=>'FormLogin', 'class'=>'form-horizontal'));?>
 	<div class="control-group">
 		<label class="control-label" for="inputLogin">Login</label>
 		<div class="controls">

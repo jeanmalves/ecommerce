@@ -4,6 +4,9 @@ class Home extends CI_Controller {
 	
 	function __construct() {
 		parent::__construct();
+		//die();
+		//verifica o tipo de login requerido ou se tem permissão para logar.
+		checkLoginSistema('sistema');
 	}
 	
 	function index() {
@@ -18,6 +21,8 @@ class Home extends CI_Controller {
 		$this->breadcrumb->add_crumb('Home', base_url());
 		//titulo da pagina
 		$this->template->title('Painel Administrativo - Solution Commerce');
+		//header adm.
+		$this->template->set_partial('header','layouts/partial/header_admin');
 		//menu adm.
 		$this->template->set_partial('menu','layouts/partial/menu_admin');
 		//menu lateral

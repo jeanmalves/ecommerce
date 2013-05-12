@@ -10,7 +10,7 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="">
-                <a href="<?php echo base_url();?>">Home</a>
+                <a href="<?php echo base_url()."admin";?>">Home</a>
               </li>
               <li class="">
                 <a href="#">Usuários</a>

@@ -16,6 +16,8 @@ class Fornecedor extends CI_Controller {
 		$this->breadcrumb->add_crumb('Home', base_url());
 		//titulo da pagina
 		$this->template->title('Painel Administrativo - Solution Commerce');
+		//header adm.
+		$this->template->set_partial('header','layouts/partial/header_admin');
 		//menu lateral
 		$this->template->set_partial('sidebar','layouts/partial/sidebar'); 
 		//constroi o template.

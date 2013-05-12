@@ -7,17 +7,16 @@ $(document).ready( function(){
 		
 		rules: {
 			inputLogin: "required",
-			inputPassword: {required: true, minlength:6}
-		},
-		highlight: function(element)
-        {
-            $(element).parents('.control-group').addClass("error");
-        }
-        ,unhighlight: function(element)
-        {
-            $(element).parents('.control-group').removeClass("error");
-        }
-
+			inputPassword: {required:true, minlength:6}
+		}
+		,highlight: function(element)
+	    {
+	        $(element).parents('.control-group').addClass("error");
+	    }
+	    ,unhighlight: function(element)
+	    {
+	        $(element).parents('.control-group').removeClass("error");
+	    }
 	});
 });
 

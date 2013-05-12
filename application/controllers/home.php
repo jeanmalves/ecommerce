@@ -20,6 +20,8 @@ class Home extends CI_Controller {
 		$this->breadcrumb->add_crumb('Home', base_url());
 		//titulo da pagina
 		$this->template->title('Home - Solution Commerce');
+		//header loja.
+		$this->template->set_partial('header','layouts/partial/header');
 		//menu loja
 		$this->template->set_partial('menu','layouts/partial/menu');
 		//slideshow jquery

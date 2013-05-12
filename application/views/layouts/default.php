@@ -11,20 +11,7 @@
 	    </head>
 	    <body>
 	    	<div class="container">
-	    		<header class="jumbotron subhead">
-	    			 <div class="container">
-	    			 	<div class="carbonad">
-	    			 		<img alt="" src="<?php echo base_url(); ?>assets/img/logo.png" />
-	    			 	</div>
-	    			 	<div class="login">
-	    			 		<?php echo $saudacao; ?>
-	    			 	</div>	
-	    			 	<div id="carrinho-container">
-	    			 		<img alt="" src="<?php echo base_url(); ?>assets/img/carrinho-compras.png" />
-	    			 		<h6>Carrinho vazio.</h6>
-	    			 	</div>
-	    			 </div>
-	    		</header>	
+	    		<?php echo (isset($template['partials']['header']))?$template['partials']['header'] : ''; ?>	
 	    		<br /> 
 	    		<?php echo (isset($template['partials']['menu']))?$template['partials']['menu'] : ''; ?>
 	    	    <?php echo (isset($template['partials']['slideshow']))?$template['partials']['slideshow'] : ''; ?>
@@ -35,11 +22,11 @@
 				    <li class="active">Data</li>-->
     			</ul>
     			<?php echo(isset($template['partials']['sidebar']))? $template['partials']['sidebar'] : ''; ?>
-	    		<div class="conteudo">
-		    		<div class="well">
+	    		<!-- <div class="conteudo"> -->
+		    		<!-- <div class="well">-->
 		    			<?php echo $template['body']; ?>
-		    		</div>
-		    	</div>
+		    		<!-- </div>-->
+		    	<!-- </div> -->
 	    		<footer>
         			<div id="menu-footer"></div>
 	                <p class="text-center">&copy; E-commerce. Todos os direitos reservados.</p>
