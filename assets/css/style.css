@@ -54,6 +54,9 @@ header .container .login p a:hover{
 .nav-list > .active > a, .nav-list > .active > a:hover, .nav-list > .active > a:focus{
 	background:#515151;
 }
+.dropdown-menu > li > a:hover{
+	background: #515151;
+}
 .nav > li > a{
 	color:#5A5A5A;
 }

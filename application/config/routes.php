@@ -44,6 +44,9 @@ $route['area-cliente/logout']					   = "login/sair";
 $route['admin']		 		 					   = "admin/home";
 $route['admin/login']		 		 			   = "admin/login";	
 $route['login/loja']			 		 		   = "login/autenticaUsuario";
+$route['admin/produto']			 		 		   = "produto";
+
+
 $route['servicos/hospedagem']					   = "hospedagem"; 
 $route['hospedagem/assinar-plano']				   = "pedido"; 	
 $route['hospedagem/assinar-plano/(:any)']		   = "pedido"; 

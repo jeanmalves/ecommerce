@@ -18,6 +18,8 @@ class Home extends CI_Controller {
 		$this->breadcrumb->add_crumb('Home', base_url());
 		//titulo da pagina
 		$this->template->title('Painel Administrativo - Solution Commerce');
+		//menu adm.
+		$this->template->set_partial('menu','layouts/partial/menu_admin');
 		//menu lateral
 		$this->template->set_partial('sidebar','layouts/partial/sidebar'); 
 		//constroi o template.

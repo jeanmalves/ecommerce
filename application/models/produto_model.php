@@ -7,13 +7,4 @@ class Produto_model extends MY_Model {
 		$this->_table = "Produto";
 	}
 
-	public function cadastrarProduto($descricao, $status, $imagem){
-		$data = array(
-			'descricao' => $descricao;
-			'status' => $status;
-			'imagem' => $imagem;
-			);
-
-		$this->db->insert_batch($data);
-	}
 }
