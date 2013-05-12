@@ -35,9 +35,11 @@
 				    <li class="active">Data</li>-->
     			</ul>
     			<?php echo(isset($template['partials']['sidebar']))? $template['partials']['sidebar'] : ''; ?>
-	    		<div class="well">
-	    			<?php echo $template['body']; ?>
-	    		</div>
+	    		<div class="conteudo">
+		    		<div class="well">
+		    			<?php echo $template['body']; ?>
+		    		</div>
+		    	</div>
 	    		<footer>
         			<div id="menu-footer"></div>
 	                <p class="text-center">&copy; E-commerce. Todos os direitos reservados.</p>

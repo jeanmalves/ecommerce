@@ -1,7 +1,8 @@
 @CHARSET "ISO-8859-1";
 
-.container{
-/*	padding:1px;*/
+.container .conteudo{
+	padding:1px;
+	margin-left:225px;
 }
 .navbar-inverse{
 	background-color:#800101!important;
