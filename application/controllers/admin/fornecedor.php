@@ -30,21 +30,32 @@ class Fornecedor extends CI_Controller {
 			redirect( base_url() ."admin/fornecedor" );
 
 		// faz as validações
-		$this->form_validation->set_rules("cnpj", "CNPJ", "trim|required|min_length[14]|max_length[14]|is_unique[fornecedores.cnpj]"); // precisa ser único
+		$this->form_validation->set_rules("cnpj", "CNPJ", "trim|required|exact_length[14]|is_unique[fornecedores.cnpj]|numeric "); // precisa ser único
 		$this->form_validation->set_rules("razaoSocial", "Razão Social", "trim|required|max_length[50]");
-		$this->form_validation->set_rules("telefone", "Telefone", "trim|required|min_length[10]|max_length[10]");
-		$this->form_validation->set_rules("numero", "Número", "trim|required");
+		$this->form_validation->set_rules("telefone", "Telefone", "trim|required|exact_length[10]|numeric");
+		$this->form_validation->set_rules("email", "Email", "trim|required|max_length[30]|valid_email");
+		$this->form_validation->set_rules("numero", "Número", "trim|required|numeric");
 		$this->form_validation->set_rules("logradouro", "Logradouro", "trim|required|max_length[30]");
-		$this->form_validation->set_rules("cep", "CEP", "trim|required|min_length[8]|max_length[8]");
+		$this->form_validation->set_rules("cep", "CEP", "trim|required|exact_length[8]|numeric");
 		$this->form_validation->set_rules("cidade", "Cidade", "trim|required|max_length[30]");
 		$this->form_validation->set_rules("estado", "Estado", "trim|required|max_length[30]");
 		
 		if ( $this->form_validation->run() == TRUE ) {
+			// pega dados do formulário e coloca no vetor de dados
 			$dados['fornecedor'] = $this->input->post('inputFornecedor'); // pega dados do formulário
+			$dados['fornec_cnpj'] = $this->input->post('cnpj'); // cnpj
+			$dados['fornec_razaoSocial'] = $this->input->post('razaoSocial'); // razao social
+			$dados['fornec_telefone'] = $this->input->post('telefone'); // telefone
+			$dados['fornec_email'] = $this->input->post('email'); // email
+			$dados['fornec_numero'] = $this->input->post('numero'); // numero
+			$dados['fornec_logradouro'] = $this->input->post('logradouro'); // logradouro
+			$dados['fornec_cep'] = $this->input->post('cep'); // cep
+			$dados['fornec_cidade'] = $this->input->post('cidade'); // cidade
+			$dados['fornec_estado'] = $this->input->post('estado'); // estado
 
 			try{ // inserção do banco de dados
 				$this->fornecedor_model->insert($dados);
-				define_flashdata('notificacao_topo', 'sucesso', 'Fornecedor cadastrado com sucesso!');
+				define_flashdata('notificacao_topo', 'sucesso', 'Fornecedor cadastrado com sucesso!'); // mostra mensagem de sucesso
 				redirect( base_url() . 'admin/fornecedor' );
 			}catch(Exception $e){
 				// define mensagem de erro no envio.
