@@ -4,6 +4,6 @@ class Fornecedor_model extends MY_Model {
 	
 	public function __construct(){
 		parent::__construct();
-		$this->_table = "fornecedor";
+		$this->_table = "fornecedores"; // carrega a tabela fornecedores
 	}
 }
