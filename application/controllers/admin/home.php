@@ -9,11 +9,9 @@ class Home extends CI_Controller {
 	function index() {
 		
 		$dados = array();
-		$slideShow = array();
-		$dados['conteudo'] = 'ok';
-		
-		
-		
+		//saudação
+		$dados['saudacao']= get_saudacao_admin();
+
 		//Carrega as partes do layout.
 			
 		//breadcrumb

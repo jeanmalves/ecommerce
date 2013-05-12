@@ -402,10 +402,37 @@ if ( ! function_exists('get_saudacao')) {
 	function get_saudacao() {
 		$ci =& get_instance();
 		$usuario = $ci->session->userdata('login_user');
+		$tipo 	 = $ci->session->userdata('tipo_user');
+		//caso encontre a sessão exibe a saudação, caso contrario exibe mensagem padrao para acesso.
+
+		if($usuario){
+			if($tipo == 1){
+				$saudacao = '<p><small> Olá '.$usuario.'!   <a href="'.base_url().'area-cliente/logout">Encerrar sessão</a> </small></p>';
+			}
+		}
+		else{
+			$saudacao = '<p><small> <a href="'.base_url().'area-cliente/login">Acesse sua área</a> ou <a href="'.base_url().'cadastro">cadastre-se</a> </small></p>';
+		}
 		
-		$saudacao = '<div class="logout">
-						Olá '.$usuario.', <br>para encerrar <a href="'.base_url().'admin/logout">clique em sair</a>
-					</div>';
+		return $saudacao;
+	}
+}
+//saudação da area administrativa
+if ( ! function_exists('get_saudacao_admin')) {
+	function get_saudacao_admin() {
+		$ci =& get_instance();
+		$usuario = $ci->session->userdata('login_user');
+		$tipo 	 = $ci->session->userdata('tipo_user');
+		//caso encontre a sessão exibe a saudação, caso contrario exibe mensagem padrao para acesso.
+
+		if($usuario){
+			if ($tipo == 2){
+				$saudacao = '<p> Olá '.$usuario.'!   <a href="'.base_url().'area-admin/sair">Sair do sistema</a></p>';
+			}
+		}
+		else{
+			$saudacao = '<p> <a href="'.base_url().'admin/login">Acesse sua área</a></p>';
+		}
 		return $saudacao;
 	}
 }

@@ -17,7 +17,7 @@
 	    			 		<img alt="" src="<?php echo base_url(); ?>assets/img/logo.png" />
 	    			 	</div>
 	    			 	<div class="login">
-	    			 		<p> <a href>Acesse sua área</a> ou <a href>cadastre-se</a> </p>
+	    			 		<?php echo $saudacao; ?>
 	    			 	</div>	
 	    			 	<div id="carrinho-container">
 	    			 		<img alt="" src="<?php echo base_url(); ?>assets/img/carrinho-compras.png" />
@@ -26,42 +26,7 @@
 	    			 </div>
 	    		</header>	
 	    		<br /> 
-	    		<div class="navbar navbar-inverse">
-			      <div class="navbar-inner">
-			        <div class="container">
-			          <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
-			            <span class="icon-bar"></span>
-			            <span class="icon-bar"></span>
-			            <span class="icon-bar"></span>
-			          </button>
-			          <a href="./index.html" class="brand">Bootstrap</a>
-			          <div class="nav-collapse collapse">
-			            <ul class="nav">
-			              <li class="">
-			                <a href="./index.html">Home</a>
-			              </li>
-			              <li class="">
-			                <a href="./getting-started.html">Get started</a>
-			              </li>
-			              <li class="">
-			                <a href="./scaffolding.html">Scaffolding</a>
-			              </li>
-			              <li class="">
-			                <a href="./base-css.html">Base CSS</a>
-			              </li>
-			              <li class="">
-			                <a href="./components.html">Components</a>
-			              </li>
-			              <li class="active">
-			                <form class="navbar-search pull-left" action="">
-								<input class="search-query span2" type="text" placeholder="Search">
-							</form>
-			              </li>
-			            </ul>
-			          </div>
-			        </div>
-			      </div>
-			    </div>
+	    		<?php echo (isset($template['partials']['menu']))?$template['partials']['menu'] : ''; ?>
 	    	    <?php echo (isset($template['partials']['slideshow']))?$template['partials']['slideshow'] : ''; ?>
 			    <ul class="breadcrumb">
 			    	<?php echo $this->breadcrumb->output(); ?>
@@ -80,6 +45,8 @@
 	   			<script src="<?php echo base_url(); ?>assets/js/jquery-1.9.1.min.js"></script>
 		    	<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
 		    	<script src="<?php echo base_url(); ?>assets/js/bootstrap-carousel.js"></script>
+		    	<script src="<?php echo base_url(); ?>assets/js/jquery.validate.js"></script>
+		    	<script src="<?php echo base_url(); ?>assets/js/script.js"></script>
 		    	<script>
 			    	$('.carousel').carousel({
 			    	  interval: 3000
