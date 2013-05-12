@@ -7,41 +7,49 @@ class Login extends CI_Controller {
 	}
 	
 	public function index() {
-		//renderiza a pagina
-		$dados['title'] = 'Solution Commerce - Login';
+		//saudação
+		$dados['saudacao']= get_saudacao();
 		
+		//breadcrumb
 		$this->breadcrumb->add_crumb('Home', base_url());
 		$this->breadcrumb->add_crumb('login', '');
 		
+		//titulo da pagina
+		$this->template->title('Home - Solution Commerce');
+		//menu loja
+		$this->template->set_partial('menu','layouts/partial/menu');
+		//constroi o layout na pagina.
 		$this->template->build('login', $dados);
 	}
 	
 	// Recebe envio do form de login
 	public function autenticaUsuario() {
-		
+
 		//se nao for enviado nada, redireciona para a pagina de login
 		if( !$this->input->post() )
-			redirect( base_url() . "login" );
+			redirect( base_url() . "area-cliente/login" );
 			
 		// executa autentica��o dos dados passados
 		$this->load->model('usuario_model');
 		$dadosLogin = $this->usuario_model->autenticaLogin( 
-			$this->input->post('loginUsuario'),
-			md5($this->input->post('loginSenhaUsuario'))
+			$this->input->post('inputLogin'),
+			md5($this->input->post('inputPassword')),
+			1
 		);
 		
 		// valida��o do form
 		$this->load->library('form_validation');		
-		$this->form_validation->set_rules('loginUsuario', '', 'trim|required');
-		$this->form_validation->set_rules('loginSenhaUsuario', '', 'trim|required');
+		$this->form_validation->set_rules('inputLogin', '', 'trim|required');
+		$this->form_validation->set_rules('inputPassword', '', 'trim|required|min_length[6]');
 		
 		if ( $this->form_validation->run() == TRUE ) {
 			
 			if( $dadosLogin ) {
 				$this->session->set_userdata(array(
-					'login_nome' => $dadosLogin['USR_NOME'],
-					'login_user' => $dadosLogin['USR_LOGIN'],
-					'id_user'	=> $dadosLogin['USR_ID']
+					'login_nome' => $dadosLogin['usr_nome'],
+					'login_user' => $dadosLogin['usr_login'],
+					'id_user'	=> $dadosLogin['usr_id'],
+					'tipo_user'	=> $dadosLogin['usr_tipo']
 				));	
 				//redireciona para a pagina principal
 				redirect( base_url());

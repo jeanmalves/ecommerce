@@ -10,16 +10,18 @@ class Home extends CI_Controller {
 		
 		$dados	   = array();
 		$slideShow = array();
-		$dados['conteudo']= 'conteudo';
-		
-		
-		
+		$dados['saudacao']= get_saudacao();
+
+		//$dados['conteudo']= 'conteudo';
+
 		//Carrega as partes do layout.
 			
 		//breadcrumb
 		$this->breadcrumb->add_crumb('Home', base_url());
 		//titulo da pagina
 		$this->template->title('Home - Solution Commerce');
+		//menu loja
+		$this->template->set_partial('menu','layouts/partial/menu');
 		//slideshow jquery
 		$this->template->set_partial('slideshow','layouts/partial/slideshow'); 
 		//menu lateral
