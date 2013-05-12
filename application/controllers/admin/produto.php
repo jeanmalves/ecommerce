@@ -24,13 +24,16 @@ class Produto extends CI_Controller {
 	}
 	
 	function cadastrarProduto(){
-		$this->load->helper("form");
-		$this->form_validation->set_rules("nome", "Nome", "trim|required"));
-		$this->form_validation->set_rules("descricao", "Descricao", "trim|required"));
+		// valida o form
+		$this->form_validation->set_rules("nome", "Nome", "trim|required");
+		$this->form_validation->set_rules("descricao", "Descricao", "trim|required");
 		$this->form_validation->set_rules("status", "Status", "trim|required");
-		$this->form_valiadtion->set_rules("imagem", "Imagem", "trim");
-
-		if()
+		$this->form_validation->set_rules("fornecedor", "Fornecedor", "required");
+		$this->form_validation->set_rules("imagem", "Imagem", "trim");
+		
+		if($this->form_validation->run() == TRUE){
+			$this->produto_model->cadastrarProduto()
+		}
 
 	}
 }
