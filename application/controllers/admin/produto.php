@@ -4,6 +4,8 @@ class Produto extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
+		//carrega o model. 
+		$this->load->model('produto_model');
 	}
 
 	function index() {
@@ -13,37 +15,74 @@ class Produto extends CI_Controller {
 		//Carrega as partes do layout.
 			
 		//breadcrumb
-		$this->breadcrumb->add_crumb('Home', base_url());
+		$this->breadcrumb->add_crumb('Home', base_url()."admin");
+		$this->breadcrumb->add_crumb('Produtos','');
 		//titulo da pagina
 		$this->template->title('Painel Administrativo - Solution Commerce');
 		//header adm.
 		$this->template->set_partial('header','layouts/partial/header_admin');
+		//menu adm.
+		$this->template->set_partial('menu','layouts/partial/menu_admin');
 		//menu lateral
-		$this->template->set_partial('sidebar','layouts/partial/sidebar'); 
+		//$this->template->set_partial('sidebar','layouts/partial/sidebar'); 
 		//constroi o template.
-		$this->template->build('admin/home', $dados);
+		$this->template->build('admin/produto', $dados);
 	}
 	
-	private function cadastrarProduto(){
-		
-		//se nao for enviado nada do formulario, redireciona para a pagina de login
-		if( !$this->input->post() )
-			redirect( base_url() ."admin/produto" );
+	public function formProduto(){
+		$dados = array();
+		$dados['saudacao']= get_saudacao_admin();
+		//Carrega as partes do layout.
+
+		if($this->input->post())
+			$this->cadastrarProduto();
 			
-		$this->form_validation->set_rules("nome", "Nome", "trim|required");
-		$this->form_validation->set_rules("descricao", "Descricao", "trim|required");
-		$this->form_validation->set_rules("status", "Status", "trim|required");
-		$this->form_valiadtion->set_rules("imagem", "Imagem", "trim");
+		//breadcrumb
+		$this->breadcrumb->add_crumb('Home', base_url()."admin");
+		$this->breadcrumb->add_crumb('Produtos','');
+		//titulo da pagina
+		$this->template->title('Painel Administrativo - Solution Commerce');
+		//header adm.
+		$this->template->set_partial('header','layouts/partial/header_admin');
+		//menu adm.
+		$this->template->set_partial('menu','layouts/partial/menu_admin');
+		//menu lateral
+		//$this->template->set_partial('sidebar','layouts/partial/sidebar'); 
+		//constroi o template.
+		$this->template->build('admin/cad_produto', $dados);
+	}
+	private function cadastrarProduto(){
+		//echo '<pre>'; print_r($this->input->post());die();
+		//se nao for enviado nada do formulario, redireciona para a pagina de login
+		
+		$status = null;	
+		$idProduto = null;
+		
+		//Define o status do registro.
+		($this->input->post('optionsRadiosAtivo')== 1)? $status = 'Ativo' : $status = 'Inativo'; 	
+		
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules("inputNome", "Nome", "trim|required");
+		$this->form_validation->set_rules("inputDesc", "Descricao", "trim");
 
 		if ( $this->form_validation->run() == TRUE ) {
 			
 			//campos vindo do formulario
-			$dados['produto'] 	 	= $this->input->post('inputProduto');
+			$dados['nome'] 	 	= $this->input->post('inputNome');
+			$dados['descricao']	= $this->input->post('inputDesc');
+			$dados['imagem']	= $this->input->post('inputFoto');
+			$dados['status']	= $status;
+			
 			
 			try {
 				//insere o produto no banco de dados.
-				$this->produto_model->insert($dados);
-				define_flashdata('notificacao_topo', 'sucesso', 'Cidade alterada com sucesso.');
+				$idProduto = $this->produto_model->insert($dados);
+				
+				//faz upload da imagem.
+				if( upload_imagens_resize('inputFoto', 'fotos', $idProduto) === FALSE ) {
+						return false;
+				}
+				define_flashdata('notificacao_topo', 'sucesso', 'Produto cadastrado com sucesso.');
 				redirect( base_url() . 'admin/produto' );
 				
 			} catch (Exception $e) {

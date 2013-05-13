@@ -313,17 +313,17 @@ if ( ! function_exists('checkLoginSistema')) {
  * Faz upload de arquivos 
  *
  * @access	public
- * @param string string('campo','foto') string('cidades','documentos') 
+ * @param string string('campo','fotos') string('produtos','documentos') 
  * @return	boolean
  */
 if ( ! function_exists('upload_arquivo')) 
 {
-	function upload_arquivo($campo, $tipo='texto', $area= 'cidades' ,$id=null) 
+	function upload_arquivo($campo, $tipo='texto', $area= 'produtos' ,$id=null) 
 	{
 		$ci = &get_instance();
 		
-		if( $tipo != 'texto' && $tipo != 'foto' ) return FALSE;
-		if( $area != 'cidades' && $area != 'documentos' ) return FALSE;
+		if( $tipo != 'texto' && $tipo != 'fotos' ) return FALSE;
+		//if( $area != 'produtos' && $area != 'documentos' ) return FALSE;
 		
 		if( $_FILES[$campo]['error'] == 0 ) {
 
@@ -332,7 +332,7 @@ if ( ! function_exists('upload_arquivo'))
 			$config['overwrite'] = TRUE;
 			
 			if( $id != null ) {
-				$config['file_name'] = md5($id) .'.jpg';
+				$config['file_name'] = md5($id) .strstr($_FILES[$campo]['name'],'.');
 				
 			} 
 			
@@ -342,22 +342,17 @@ if ( ! function_exists('upload_arquivo'))
 			elseif( $tipo == 'foto' ) {
 				$config['allowed_types'] = 'jpg|jpeg|png|gif';
 				
-				if( $area == 'cidades' ) {
+				if( $area == 'produtos' ) {
 					$config['max_width']  	 = '118';
 					$config['max_height']    = '130';
 					
 				}
-				elseif( $area == 'documentos' ) {
-					$config['max_width']  	 = '190';
-					$config['max_height']    = '100';
-				}
-				
 			}
 			
 			$ci->load->library('upload', $config);
 				
 			if ( !$ci->upload->do_upload($campo)) {
-				//echo '<pre>';print_r($config);die();
+				
 				define_flashdata('notificacao_topo', 'erro', 'Erro ao fazer upload de arquivo: '.$ci->upload->display_errors(), TRUE);
 				return FALSE;
 			}

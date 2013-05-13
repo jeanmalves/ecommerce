@@ -15,8 +15,19 @@
               <li class="">
                 <a href="#">Usuários</a>
               </li>
-              <li class="">
-                <a href="#">Produtos</a>
+              <li class="dropdown">
+              	<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					Produtos
+					<b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+				  <li><a href="<?php echo base_url();?>/admin/produto">Produtos Cadastrados</a></li>	
+                  <li><a href="<?php echo base_url();?>admin/produto/cadastrar-produto">Cadastrar Produtos</a></li>
+                  <!-- <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>-->
+                  <li class="divider"></li> 
+                  <!-- <li><a href="#">Separated link</a></li>-->
+                </ul>
               </li>
               <li class="">
                 <a href="#">Fornecedores</a>

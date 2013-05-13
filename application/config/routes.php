@@ -46,7 +46,9 @@ $route['admin']		 		 					   = "admin/home";
 $route['login/loja']			 		 		   = "login/autenticaCliente";
 $route['admin/login/user']			 		 	   = "admin/login";
 $route['admin/sair']							   = "admin/login/sair";	
-$route['admin/produto']			 		 		   = "produto";
+$route['admin/produto']							   = "admin/produto";	
+$route['admin/produto/cadastrar-produto']		   = "admin/produto/formProduto";
+//$route['admin/cadastrar-produto']			 	   = "produto/cadastrarProduto";
 
 
 $route['servicos/hospedagem']					   = "hospedagem"; 
