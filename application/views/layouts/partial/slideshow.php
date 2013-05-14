@@ -12,12 +12,12 @@
                     </div>
     </div>
     <div class="item">
-    	<img src="<?php echo base_url(); ?>assets/img/compras.jpg" alt="">
+    	<img src="<?php echo base_url(); ?>assets/img/eletronicos.png" alt="">
     	<div class="carousel-caption">
                     </div>
     </div>
     <div class="item">
-    	<img src="<?php echo base_url(); ?>assets/img/compras.jpg" alt="">
+    	<img src="<?php echo base_url(); ?>assets/img/eletro.png" alt="">
     	<div class="carousel-caption">
                     </div>
     </div>

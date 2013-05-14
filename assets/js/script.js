@@ -18,6 +18,16 @@ $(document).ready( function(){
 	        $(element).parents('.control-group').removeClass("error");
 	    }
 	});
+	
+	//mascara campo 
+	$('#inputPreco').priceFormat({
+        prefix: '',
+        centsSeparator: ',',
+        thousandsSeparator: '.',
+            limit: 7,
+    });
+
+	
 });
 
 /*=====================================================*/

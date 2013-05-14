@@ -21,7 +21,7 @@
 					<b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
-				  <li><a href="<?php echo base_url();?>/admin/produto">Produtos Cadastrados</a></li>	
+				  <li><a href="<?php echo base_url();?>admin/produto">Produtos Cadastrados</a></li>	
                   <li><a href="<?php echo base_url();?>admin/produto/cadastrar-produto">Cadastrar Produtos</a></li>
                   <!-- <li><a href="#">Another action</a></li>
                   <li><a href="#">Something else here</a></li>-->
@@ -32,20 +32,15 @@
               <li class="">
                 <a href="#">Fornecedores</a>
               </li>
-              <li class="">
-                <a href="#">Contato</a>
-              </li>
               <li class="active dropdown">
               	<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 					Estoque
 					<b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
-                  <li><a href="#">Lista Estoque</a></li>
-                  <li><a href="#">Entrada</a></li>
-                  <li><a href="#"></a></li>
+                  <li><a href="<?php echo base_url();?>admin/estoque">Lista Estoque</a></li>
+                  <li><a href="<?php echo base_url();?>admin/estoque/cadastrar-estoque">Entrada</a></li>
                   <li class="divider"></li>
-                  <li><a href="#"></a></li>
                 </ul>
                <!-- <form class="navbar-search pull-left" action="">
 					<input class="search-query span2" type="text" placeholder="Search">

@@ -12,8 +12,25 @@ class Produto extends CI_Controller {
 		$dados = array();
 		$slideShow = array();	
 		$dados['saudacao']= get_saudacao_admin();
+		
+		//monta a paginação
+		if( $this->uri->segment(2) && !is_numeric($this->uri->segment(2)) ) {
+			$config['uri_segment_search'] = 3;
+			$config['uri_segment'] = 4;		
+		} 
+		
+		$config['per_page']   = '6';
+		$config['total_rows'] = count($this->produto_model->getProdutos());
+		$config['base_url']	= base_url()."admin/produto";
+		$this->load->library('pagination', $config);
+		$dados['listagem'] = $this->produto_model->getProdutos( $this->pagination->array_limoff(), false );
+		$dados['total'] = $config['total_rows'];
+		
+		$dados['links_paginacao'] = $this->pagination->create_links();
+		
+		
+		
 		//Carrega as partes do layout.
-			
 		//breadcrumb
 		$this->breadcrumb->add_crumb('Home', base_url()."admin");
 		$this->breadcrumb->add_crumb('Produtos','');
@@ -77,7 +94,7 @@ class Produto extends CI_Controller {
 				$bool = upload_imagens_resize('file','produtos',$idProduto);
 				if( $bool === FALSE ) {
 					// define mensagem de erro no envio.
-					define_flashdata('notificacao_topo', 'alert-error', "Houve um erro ao cadastrar a foto.");
+					define_flashdata('notificacao_topo', 'alert-error', "Houve um erro ao cadastrar a foto.",TRUE);
 						return false;
 				}
 				define_flashdata('notificacao_topo', 'alert-success', 'Produto cadastrado com sucesso.');
@@ -86,7 +103,7 @@ class Produto extends CI_Controller {
 			} 
 			redirect( base_url() . 'admin/produto/cadastrar-produto' );
 				// define mensagem de erro no envio.
-				define_flashdata('notificacao_topo', 'alert-error', 'Houve um erro ao executar seu cadastro. Por favor, tente novamente em alguns instantes.');	
+				define_flashdata('notificacao_topo', 'alert-error', 'Houve um erro ao executar seu cadastro. Por favor, tente novamente em alguns instantes.',TRUE);	
 
 		}
 	}

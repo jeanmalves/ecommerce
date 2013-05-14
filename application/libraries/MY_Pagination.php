@@ -32,12 +32,12 @@ class MY_Pagination extends CI_Pagination {
 			$this->num_pages = ceil($this->total_rows / $this->per_page);
 		}
 		
-		// Identifica página atual
+		// Identifica pï¿½gina atual
 		$this->current_pagenumber();
 	}
 	
 	/**
-	 * Retorna um array com o limit e offset específico para paginação
+	 * Retorna um array com o limit e offset especï¿½fico para paginaï¿½ï¿½o
 	 *
 	 * @access	public
 	 * @return	array - array(limit, offset)
@@ -51,10 +51,10 @@ class MY_Pagination extends CI_Pagination {
 	}
 	
 	/**
-	 * Determina qual o número da página atual
-	 * da paginação. Na verdade esta função é bloco
-	 * de código que existia na create_links()
-	 * que eu converti para função pois preciso usar 
+	 * Determina qual o nï¿½mero da pï¿½gina atual
+	 * da paginaï¿½ï¿½o. Na verdade esta funï¿½ï¿½o ï¿½ bloco
+	 * de cï¿½digo que existia na create_links()
+	 * que eu converti para funï¿½ï¿½o pois preciso usar 
 	 * em outros lugares
 	 * 
 	 * @access private
@@ -116,11 +116,11 @@ class MY_Pagination extends CI_Pagination {
 	}
 	
 	/**
-	 * Override na função que gera os links de paginação
-	 * para poder separar a criação dos links com a 
-	 * determinação da página atual (cur_page)
+	 * Override na funï¿½ï¿½o que gera os links de paginaï¿½ï¿½o
+	 * para poder separar a criaï¿½ï¿½o dos links com a 
+	 * determinaï¿½ï¿½o da pï¿½gina atual (cur_page)
 	 * 
-	 * Incluído também tratamento para busca
+	 * Incluï¿½do tambï¿½m tratamento para busca
 	 *
 	 * @access	public
 	 * @return	string
@@ -129,8 +129,8 @@ class MY_Pagination extends CI_Pagination {
 		
 		$CI =& get_instance();
 		
-		// Se num_pages for 0 não precisa continuar, pois automaticamente ou total_rows
-		// ou per_page será 0 também
+		// Se num_pages for 0 nï¿½o precisa continuar, pois automaticamente ou total_rows
+		// ou per_page serï¿½ 0 tambï¿½m
 		if ($this->num_pages == 0 OR $this->total_rows == 0 OR $this->per_page == 0)
 		{
 			return '';

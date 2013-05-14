@@ -42,7 +42,7 @@
 		</div>
 		<div class="control-group">
 			<div class="controls">
-			    <button type="submit" class="btn">Savar</button>
+			    <button type="submit" class="btn">Salvar</button>
 			</div>
 		</div>    
 	<?php echo form_close();?>

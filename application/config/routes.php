@@ -42,13 +42,17 @@ $route['default_controller'] 					   = "home";
 $route['area-cliente/login']					   = "login";	
 $route['area-cliente/logout']					   = "login/sair";
 $route['admin']		 		 					   = "admin/home";	
-//$route['admin/login']							   = "admin/login";	
 $route['login/loja']			 		 		   = "login/autenticaCliente";
 $route['admin/login/user']			 		 	   = "admin/login";
 $route['admin/sair']							   = "admin/login/sair";	
 $route['admin/produto']							   = "admin/produto";	
+$route['admin/produto/(:any)']  				   = "admin/produto";
+$route['admin/produto/(:any)/(:num)']			   = "admin/produto";
 $route['admin/produto/cadastrar-produto']		   = "admin/produto/produtoView";
-
+$route['admin/estoque']		   					   = "admin/estoque";
+$route['admin/estoque/(:any)']   = "admin/estoque";
+$route['admin/estoque/(:any)/(:num)']	= "admin/estoque";
+$route['admin/estoque/cadastrar-estoque']		   = "admin/estoque/estoqueView";
 
 $route['servicos/hospedagem']					   = "hospedagem"; 
 $route['hospedagem/assinar-plano']				   = "pedido"; 	
