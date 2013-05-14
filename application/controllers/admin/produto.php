@@ -29,14 +29,14 @@ class Produto extends CI_Controller {
 		$this->template->build('admin/produto', $dados);
 	}
 	
-	public function formProduto(){
+	public function produtoView(){
 		$dados = array();
 		$dados['saudacao']= get_saudacao_admin();
-		//Carrega as partes do layout.
-
+		
 		if($this->input->post())
 			$this->cadastrarProduto();
 			
+		//Carrega as partes do layout.	
 		//breadcrumb
 		$this->breadcrumb->add_crumb('Home', base_url()."admin");
 		$this->breadcrumb->add_crumb('Produtos','');
@@ -52,9 +52,7 @@ class Produto extends CI_Controller {
 		$this->template->build('admin/cad_produto', $dados);
 	}
 	private function cadastrarProduto(){
-		//echo '<pre>'; print_r($this->input->post());die();
-		//se nao for enviado nada do formulario, redireciona para a pagina de login
-		
+
 		$status = null;	
 		$idProduto = null;
 		
@@ -70,28 +68,26 @@ class Produto extends CI_Controller {
 			//campos vindo do formulario
 			$dados['nome'] 	 	= $this->input->post('inputNome');
 			$dados['descricao']	= $this->input->post('inputDesc');
-			$dados['imagem']	= $this->input->post('inputFoto');
 			$dados['status']	= $status;
+			$fotos = $_FILES;
 			
-			
-			try {
-				//insere o produto no banco de dados.
-				$idProduto = $this->produto_model->insert($dados);
-				
+			//insere o produto no banco de dados.
+			if($idProduto = $this->produto_model->insert($dados)){
 				//faz upload da imagem.
-				if( upload_imagens_resize('inputFoto', 'fotos', $idProduto) === FALSE ) {
+				$bool = upload_imagens_resize('file','produtos',$idProduto);
+				if( $bool === FALSE ) {
+					// define mensagem de erro no envio.
+					define_flashdata('notificacao_topo', 'alert-error', "Houve um erro ao cadastrar a foto.");
 						return false;
 				}
-				define_flashdata('notificacao_topo', 'sucesso', 'Produto cadastrado com sucesso.');
-				redirect( base_url() . 'admin/produto' );
-				
-			} catch (Exception $e) {
-				// define mensagem de erro no envio.
-				define_flashdata('notificacao_topo', 'erro', 'Houve um erro ao executar seu cadastro. Por favor, tente novamente em alguns instantes.'.$e.getMessage().'',TRUE);
-			}
+				define_flashdata('notificacao_topo', 'alert-success', 'Produto cadastrado com sucesso.');
+				redirect( base_url() . 'admin/produto/cadastrar-produto' );
 			
+			} 
+			redirect( base_url() . 'admin/produto/cadastrar-produto' );
+				// define mensagem de erro no envio.
+				define_flashdata('notificacao_topo', 'alert-error', 'Houve um erro ao executar seu cadastro. Por favor, tente novamente em alguns instantes.');	
+
 		}
-		// define mensagem de erro no envio.
-		define_flashdata('notificacao_topo', 'erro', 'Houve um erro ao executar seu cadastro. Por favor, tente novamente em alguns instantes.',TRUE);
 	}
 }

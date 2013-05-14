@@ -1,3 +1,4 @@
+<?php echo exibe_flashdata('notificacao_topo'); ?>
 <header class="jumbotron subhead">
      <div class="container">
      	<div class="carbonad">

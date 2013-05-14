@@ -26,7 +26,7 @@ class Home extends CI_Controller {
 		//menu adm.
 		$this->template->set_partial('menu','layouts/partial/menu_admin');
 		//menu lateral
-		$this->template->set_partial('sidebar','layouts/partial/sidebar'); 
+		//$this->template->set_partial('sidebar','layouts/partial/sidebar'); 
 		//constroi o template.
 		$this->template->build('admin/home', $dados); 
 	}

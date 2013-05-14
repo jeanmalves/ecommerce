@@ -47,8 +47,7 @@ $route['login/loja']			 		 		   = "login/autenticaCliente";
 $route['admin/login/user']			 		 	   = "admin/login";
 $route['admin/sair']							   = "admin/login/sair";	
 $route['admin/produto']							   = "admin/produto";	
-$route['admin/produto/cadastrar-produto']		   = "admin/produto/formProduto";
-//$route['admin/cadastrar-produto']			 	   = "produto/cadastrarProduto";
+$route['admin/produto/cadastrar-produto']		   = "admin/produto/produtoView";
 
 
 $route['servicos/hospedagem']					   = "hospedagem"; 
@@ -57,6 +56,7 @@ $route['hospedagem/assinar-plano/(:any)']		   = "pedido";
 $route['hospedagem/pagamento']					   = "central_pagamento";	
 $route['contato/envia-mensagem']				   = "contato/envia";	  	
 
+$route['upFoto']					   			   = "ajax/busca_cep";
 $route['getPreco']								   = "ajax/getPrecoPlano";	
 $route['cep']					   				   = "ajax/busca_cep";
 $route['validaCep']								   = "ajax/valida_cep";

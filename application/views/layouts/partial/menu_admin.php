@@ -37,15 +37,15 @@
               </li>
               <li class="active dropdown">
               	<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-					Dropdown
+					Estoque
 					<b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Lista Estoque</a></li>
+                  <li><a href="#">Entrada</a></li>
+                  <li><a href="#"></a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#"></a></li>
                 </ul>
                <!-- <form class="navbar-search pull-left" action="">
 					<input class="search-query span2" type="text" placeholder="Search">

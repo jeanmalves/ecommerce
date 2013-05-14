@@ -34,8 +34,9 @@ if ( ! function_exists('exibe_flashdata')) {
 		$html = '';
 		if (is_array($msg)) {
 			if( $nome == 'notificacao_topo' ) {
-				$html = '<div class="notification '.$msg['tipo'].'">
-							 <p><strong>'.$msg['msg'].'</strong></p>
+				$html = '<div class="alert '.$msg['tipo'].'">
+							<button data-dismiss="alert" class="close" type="button">×</button>
+							 <strong>'.$msg['msg'].'</strong>
 						 </div>';
 			}
 			elseif( $nome == 'notificacao_parag' ) {
@@ -263,16 +264,16 @@ if ( ! function_exists('checkLogin')) {
 	  $tipo_logado = $ci->session->userdata('tipo_user');
                 if( $tipo_logado ) {
                         if( $tipo_logado == 1 && $tipo_login == 'sistema' ) {
-                                define_flashdata('notificacao_topo', 'info', 'Voc� n�o tem permiss�o para acessar esta �rea!');
+                                define_flashdata('notificacao_topo', 'info', 'Você não tem permissão para acessar esta área!');
                                 redirect( base_url() . 'area-cliente/login' );
                         } 
                         elseif( $tipo_logado == 2 && $tipo_login == 'loja' ) {
-                                define_flashdata('notificacao_topo', 'info', 'Voc� n�o tem permiss�o para acessar esta �rea!');
+                                define_flashdata('notificacao_topo', 'info', 'Você não tem permissão para acessar esta área!');
                                 redirect( base_url() . 'area-cliente/login' );
                         }
                 }
                 else {
-                        define_flashdata('notificacao_topo', 'info', 'Voc� precisa estar logado para acessar esta �rea!');
+                        define_flashdata('notificacao_topo', 'info', 'Você precisa estar logado para acessar esta área!');
                         $ci->session->set_userdata('login_redirect', $ci->uri->uri_string());
                         redirect( base_url());               
                 }
@@ -289,16 +290,16 @@ if ( ! function_exists('checkLoginSistema')) {
 	  $tipo_logado = $ci->session->userdata('tipo_user');
                 if( $tipo_logado ) {
                         if( $tipo_logado == 1 && $tipo_login == 'sistema' ) {
-                                define_flashdata('notificacao_topo', 'info', 'Voc� n�o tem permiss�o para acessar esta �rea!');
+                                define_flashdata('notificacao_topo', 'info', 'Você não tem permissão para acessar esta área!');
                                 redirect( base_url() . 'area-cliente/login' );
                         } 
                         elseif( $tipo_logado == 2 && $tipo_login == 'loja' ) {
-                                define_flashdata('notificacao_topo', 'info', 'Voc� n�o tem permiss�o para acessar esta �rea!');
+                                define_flashdata('notificacao_topo', 'info', 'Você não tem permissão para acessar esta área!');
                                 redirect( base_url() . 'admin/login' );
                         }
                 }
                 else {
-                        define_flashdata('notificacao_topo', 'info', 'Voc� precisa estar logado para acessar esta �rea!');
+                        define_flashdata('notificacao_topo', 'info', 'Você precisa estar logado para acessar esta área!');
                         $ci->session->set_userdata('login_redirect', $ci->uri->uri_string());
                         redirect( base_url()."admin/login");               
                 }
@@ -379,7 +380,7 @@ if ( ! function_exists('upload_arquivo'))
  */
 if ( ! function_exists('upload_imagens_resize')) 
 {
-	function upload_imagens_resize($campo, $arquivo='foto', $id=null) 
+	function upload_imagens_resize($campo, $arquivo='fotos', $id=null) 
 	{
 		$ci = &get_instance();
 		
@@ -388,7 +389,7 @@ if ( ! function_exists('upload_imagens_resize'))
 			// define configs para upload
 			$config['upload_path'] 	= './arquivos/temp';
 			$config['max_size']		= '2048'; // 2MB
-			$config['file_name'] 	= md5($_FILES[$campo]['name'] . time()) .'.jpg';
+			$config['file_name'] 	= $id."-".md5($_FILES[$campo]['name'] . time()) .strstr($_FILES[$campo]['name'],'.');
 			
 			if( $arquivo == 'texto' )
 				$config['allowed_types'] = 'doc|docx|pdf';
@@ -408,7 +409,7 @@ if ( ! function_exists('upload_imagens_resize'))
 					// configs para resize
 					$config = array();
 					$config['source_image'] 	= $ci->upload->upload_path . $ci->upload->file_name;
-					$config['new_image'] = './arquivos/cidades/foto/'. md5($id) .'.jpg';
+					$config['new_image'] = './arquivos/produtos/fotos/'. $id."-".md5($_FILES[$campo]['name'] . time()) .strstr($_FILES[$campo]['name'],'.');
 			        $config['maintain_ratio'] 	= TRUE;
 			        $config['quality'] 			= '100%';
 			        $config['width'] 			= 190;
@@ -427,6 +428,41 @@ if ( ! function_exists('upload_imagens_resize'))
 			return 'erro|Erro n�o esperado. Tente novamente com menor arquivo.';
 		}
 }  
+
+if( ! function_exists('uploadFotos')){
+	
+	function uploadFotos($campo, $id, $area){
+		
+		$ci = &get_instance();
+		
+		if( $_FILES[$campo]['error'] == 0 ) {
+			$ci->load->library('upload', $_FILES[$campo]);
+			foreach($_FILES[$campo]['tmp_name'] as $key => $value){
+				
+				//$upload = new Upload($value);
+			
+				if($ci->upload->uploaded){
+					$ci->upload->file_new_name_body = $id."-".md5($id);// .strstr($_FILES[$campo]['name'],'.');
+					$ci->upload->image_resize = true;
+					$ci->upload->image_ratio_y = true;
+					$ci->upload->image_x = 800;
+					$ci->upload->image_convert = 'jpg';
+					$ci->upload->jpeg_quality = 80;
+					$ci->upload->image_watermark_position = "BR";
+					$ci->upload->image_watermark_x = -15;
+					$ci->upload->process('./arquivos/' . $area . '/fotos');
+				
+					if($ci->upload->processed){
+						true;
+					}else{
+						echo $ci->upload->error;
+					}
+				}
+			}
+		}
+	}
+}
+
 if ( ! function_exists('get_saudacao')) {
 	function get_saudacao() {
 		$ci =& get_instance();

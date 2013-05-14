@@ -27,7 +27,7 @@ class Home extends CI_Controller {
 		//slideshow jquery
 		$this->template->set_partial('slideshow','layouts/partial/slideshow'); 
 		//menu lateral
-		$this->template->set_partial('sidebar','layouts/partial/sidebar'); 
+		//$this->template->set_partial('sidebar','layouts/partial/sidebar'); 
 		//constroi o template.
 		$this->template->build('home', $dados); 
 	}

@@ -4,7 +4,7 @@
 		<div class="control-group">
 			<label class="control-label" for="inputNome">Nome</label>
 			<div class="controls">
-				<input type="text" id="inputNome" name="inputNome" placeholder="Nome do Produto">
+				<input type="text" id="inputNome" name="inputNome" placeholder="Nome do Produto" required>
 			</div>
 			<div class="controls"><small><?php echo form_error('inputNome');?></small></div>
 		</div>
@@ -19,7 +19,8 @@
 		<div class="control-group">
 			<label class="control-label" for="inputFoto">Foto do Produto</label>
 			<div class="controls">
-				<?php echo form_upload(array('type'=>'file', 'id'=>'inputFoto', 'name'=>'inputFoto'),value_field('inputFoto'));?>
+				<input type="file" name="file[]" multiple="multiple" accept="image/jpg,image/jpeg,image/gif,image/png">
+				<?php //echo form_input(array('type'=>'file', 'id'=>'inputFoto', 'name'=>'inputFoto'),value_field('inputFoto')); ?>
 			</div>
 			<div class="controls"><small>Insira apenas uma imagem.</small></div>
 			<div class="controls"><small><?php echo form_error('inputDesc');?></small></div>

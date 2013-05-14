@@ -35,8 +35,12 @@
 		    	<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
 		    	<script src="<?php echo base_url(); ?>assets/js/bootstrap-carousel.js"></script>
 		    	<script src="<?php echo base_url(); ?>assets/js/jquery.validate.js"></script>
+		    	<script src="<?php echo base_url(); ?>assets/js/jquery.form.js"></script>
 		    	<script src="<?php echo base_url(); ?>assets/js/script.js"></script>
 		    	<script>
+		    		var system_vars = new Object();
+		        	system_vars.base_url = '<?php echo base_url(); ?>';
+	    			
 			    	$('.carousel').carousel({
 			    	  interval: 3000
 			    	})

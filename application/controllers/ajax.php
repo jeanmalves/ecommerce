@@ -89,4 +89,37 @@ class Ajax extends CI_Controller
 			echo json_encode(TRUE);
 		}
 	}
+	public function upFotoProduto()
+	{
+		$this->load->library('Upload');
+		
+	if(isset($_POST['sendFiles'])){
+    if(isset($_FILES['file']) and ($_FILES['file']['tmp_name'] != "")){
+        foreach($_FILES['file']['tmp_name'] as $key => $value){
+            $upload = new Upload($value);
+       
+            if($upload->uploaded){
+                $upload->file_new_name_body = 'file' .rand(1000,1000);
+                $upload->image_resize = true;
+                $upload->image_ratio_y = true;
+                $upload->image_x = 800;
+                $upload->image_convert = 'jpg';
+                $upload->jpeg_quality = 80;
+                $upload->image_watermark_position = "BR";
+                $upload->image_watermark_x = -15;
+                $upload->process('images/');
+           
+                if($upload->processed){
+                    true;
+                }else{
+                    echo $upload->error;
+                }
+            }
+        }
+    }
+}
+		
+		
+	
+	}
 }

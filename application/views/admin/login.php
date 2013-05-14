@@ -3,14 +3,14 @@
 	<div class="control-group">
 		<label class="control-label" for="inputLogin">Login</label>
 		<div class="controls">
-			<input type="text" name ="inputLogin" id="inputLogin" placeholder="Login">
+			<input type="text" name ="inputLogin" id="inputLogin" placeholder="Login" required>
 			<?php echo form_error('inputLogin'); ?>
 		</div>
 	</div>
 	<div class="control-group">
 		<label class="control-label" for="inputPassword">Senha</label>
 		<div class="controls">
-			<input type="password" name="inputPassword" id="inputPassword" placeholder="Senha">
+			<input type="password" name="inputPassword" id="inputPassword" placeholder="Senha" required>
 			<?php echo form_error('inputPassword'); ?>
 		</div>	
 	</div>
